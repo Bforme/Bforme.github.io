@@ -9,8 +9,8 @@
     :root {
       --bg1: #667eea;
       --bg2: #764ba2;
-      --card-bg: rgba(255, 255, 255, 0.1);
-      --text-light: rgba(255, 255, 255, 0.85);
+      --card-bg: rgba(255, 255, 255, 0.09);
+      --text-light: rgba(255, 255, 255, 0.88);
       --radius: 18px;
       --maxw: 960px;
     }
@@ -21,19 +21,46 @@
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, var(--bg1), var(--bg2));
       color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 20px;
     }
 
+    .wrap {
+      position: relative;
+      width: 100%;
+      max-width: var(--maxw);
+    }
+
+    .side-btn{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width:48px;
+      height:48px;
+      border-radius:50%;
+      background: rgba(0,0,0,0.18);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      text-decoration:none;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      transition: transform .12s ease, background .12s ease;
+    }
+    .side-btn:hover{ transform: translateY(-50%) scale(1.06); background: rgba(0,0,0,0.26) }
+
+    .side-btn.left{ left: -24px; }   /* sedikit keluar dari card */
+    .side-btn.right{ right: -24px; }
+
     .card {
+      margin: 0 auto;
       background: var(--card-bg);
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(12px);
       border-radius: var(--radius);
       padding: 40px;
-      max-width: var(--maxw);
       width: 100%;
       text-align: center;
       box-shadow: 0 8px 30px rgba(0,0,0,0.25);
@@ -43,89 +70,66 @@
       width: 140px;
       height: 140px;
       border-radius: 50%;
-      border: 4px solid white;
+      border: 4px solid rgba(255,255,255,0.9);
       object-fit: cover;
       margin-bottom: 20px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      display:block;
+      margin-left:auto; margin-right:auto;
+      background: rgba(255,255,255,0.06);
     }
 
-    h1 {
-      font-size: 2rem;
-      margin: 10px 0 5px;
+    h1 { font-size: 2rem; margin: 10px 0 5px; }
+    h2 { font-size: 1rem; font-weight: 400; color: var(--text-light); margin-bottom: 18px; }
+    p { font-size: 1.05rem; margin-bottom: 18px; color: var(--text-light); line-height:1.45; }
+
+    .links { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:8px }
+    .links a{
+      padding:10px 18px; border-radius:999px; background: rgba(255,255,255,0.12);
+      color:white; text-decoration:none; font-weight:600; transition: .12s;
     }
-    h2 {
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--text-light);
-      margin-bottom: 25px;
+    .links a:hover{ background:white; color:var(--bg2) }
+
+    .footer { margin-top:14px; font-size:0.9rem; opacity:0.9; color:var(--text-light) }
+
+    /* mobile */
+    @media (max-width:720px){
+      .side-btn{ display:none } /* sembunyikan tombol samping di layar kecil */
+      .card{ padding:26px }
+      h1{ font-size:1.5rem }
+      .profile-pic{ width:120px; height:120px }
     }
 
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 25px;
-      line-height: 1.5;
-    }
-
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 25px;
-    }
-
-    .links a {
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 30px;
-      background: rgba(255, 255, 255, 0.15);
-      color: #fff;
-      text-decoration: none;
-      transition: 0.3s;
-      font-weight: 500;
-    }
-
-    .links a:hover {
-      background: #fff;
-      color: var(--bg2);
-      transform: translateY(-2px);
-    }
-
-    .footer {
-      font-size: 0.9rem;
-      opacity: 0.85;
-      margin-top: 20px;
-    }
-
-    /* Responsif */
-    @media (max-width: 600px) {
-      .card {
-        padding: 25px 20px;
-      }
-      h1 { font-size: 1.6rem; }
-      p { font-size: 1rem; }
-    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <!-- Ganti link foto sesuai URL Postimage kamu -->
-    <img src="https://postimg.cc/479S3d2S" alt="Foto Barrul Khodil Dzakiyi" class="profile-pic">
+  <div class="wrap">
+    <!-- tombol kiri -> buka galeri (buka di tab baru) -->
+    <a class="side-btn left" href="gallery.html" target="_blank" title="Buka Galeri Foto">
+      <!-- simple arrow icon -->
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
 
-    <h1>Barrul Khodil Dzakiyi</h1>
-    <h2>Progaming · Hobbyist developer · Sharing for you</h2>
+    <!-- tombol kanan -> buka galeri (buka di tab baru) -->
+    <a class="side-btn right" href="gallery.html" target="_blank" title="Buka Galeri Foto">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
 
-    <p>Personal branding for me to you all😆<br>
-   Follo me. 🚀</p>
+    <div class="card">
+      <img class="profile-pic" alt="Foto Barrul Khodil Dzakiyi"
+           src="https://i.postimg.cc/DZjkB4rn/Whats-App-Image-2025-09-14-at-14-17-35.jpg">
 
-    <div class="links">
-      <a href="https://www.instagram.com/yooomaalajkaa" target="_blank">Instagram</a>
-      <a href="https://wa.me/6289512294175" target="_blank">WhatsApp</a>
-    </div>
+      <h1>Barrul Khodil Dzakiyi</h1>
+      <h2>Progaming · Hobbyist developer · Sharing for you</h2>
 
-    <div class="footer">
-      📍 Indonesia · Malang city only & smart projects<br>
-      © 2025 Barrul Khodil Dzakiyi
+      <p>Personal branding for me to you all 😆<br>Follow me. 🚀</p>
+
+      <div class="links">
+        <a href="https://www.instagram.com/yooomaalajkaa" target="_blank">Instagram</a>
+        <a href="https://wa.me/6289512294175" target="_blank">WhatsApp</a>
+      </div>
+
+      <div class="footer">📍 Indonesia · Malang city only & smart projects · © 2025 Barrul Khodil Dzakiyi</div>
     </div>
   </div>
 </body>
