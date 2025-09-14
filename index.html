@@ -1,83 +1,242 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio Saya</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Barrul Khodil Dzakiyi — Portfolio</title>
+  <meta name="description" content="Portfolio mini Barrul Khodil Dzakiyi — belajar coding, membuat website, dan berbagi proyek." />
+
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      min-height: 100vh;
-      text-align: center;
+    :root{
+      --bg1: #667eea;
+      --bg2: #764ba2;
+      --glass: rgba(255,255,255,0.08);
+      --glass-strong: rgba(255,255,255,0.14);
+      --accent: #ffffff;
+      --muted: rgba(255,255,255,0.85);
+      --radius: 14px;
+      --maxw: 920px;
     }
 
-    .profile-pic {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 4px solid white;
-      object-fit: cover;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      background: linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:var(--accent);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:36px 18px;
+      min-height:100vh;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+    .card{
+      width:100%;
+      max-width:var(--maxw);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border-radius:var(--radius);
+      padding:36px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      display:flex;
+      gap:28px;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      backdrop-filter: blur(6px);
     }
 
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 30px;
+    /* left: photo + social vertical on mobile */
+    .left{
+      flex:0 0 220px;
+      text-align:center;
     }
 
-    .links a {
-      display: inline-block;
-      margin: 0 10px;
-      padding: 10px 20px;
-      border-radius: 30px;
-      background: rgba(255,255,255,0.2);
-      color: #fff;
-      text-decoration: none;
-      transition: 0.3s;
+    .profile-pic{
+      width:170px;
+      height:170px;
+      border-radius:50%;
+      object-fit:cover;
+      border:4px solid rgba(255,255,255,0.18);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      transition: transform .35s ease;
+    }
+    .profile-pic:hover{ transform: translateY(-6px) scale(1.02) }
+
+    .name{
+      margin:14px 0 6px;
+      font-size:1.5rem;
+      font-weight:700;
+      letter-spacing:0.2px;
+    }
+    .role{
+      margin:0;
+      font-size:0.95rem;
+      color:var(--muted);
     }
 
-    .links a:hover {
-      background: #fff;
-      color: #764ba2;
+    .body-right{ flex:1 1 auto; min-width:220px; }
+    h1{
+      margin:0 0 8px 0;
+      font-size:1.6rem;
+      line-height:1.05;
+    }
+    p.lead{
+      margin:0 0 18px 0;
+      color:var(--muted);
+      font-size:1rem;
     }
 
-    footer {
-      position: absolute;
-      bottom: 15px;
-      font-size: 0.9rem;
-      opacity: 0.8;
+    .links{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      text-decoration:none;
+      background:var(--glass);
+      color:var(--accent);
+      font-weight:600;
+      transition: transform .15s ease, background .15s ease;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+    .btn:focus{ outline:2px solid rgba(255,255,255,0.12); outline-offset:3px }
+    .btn:hover{ transform: translateY(-4px) }
+    .btn svg{ width:18px; height:18px; display:block }
+
+    /* primary style for WhatsApp button */
+    .btn.wa{
+      background: linear-gradient(90deg,#25D366,#128C7E);
+      color:#fff;
+    }
+
+    /* small description badges */
+    .meta{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:0.9rem;
+    }
+
+    footer{
+      position:absolute;
+      right:18px;
+      bottom:18px;
+      font-size:0.85rem;
+      color:rgba(255,255,255,0.75);
+      opacity:0.95;
+    }
+
+    /* floating WA quick-action */
+    .float-wa{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:999;
+    }
+    .float-wa a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      background:linear-gradient(90deg,#25D366,#128C7E);
+      box-shadow: 0 8px 20px rgba(18,140,126,0.25);
+      text-decoration:none;
+    }
+    .float-wa svg{ width:28px; height:28px; color:white }
+
+    /* responsive */
+    @media (max-width:720px){
+      .card{ flex-direction:column; padding:22px; gap:16px }
+      .left{ order:0 }
+      .body-right{ text-align:center }
+      footer{ position:static; margin-top:6px }
     }
   </style>
 </head>
 <body>
-  <!-- Ganti src dengan link foto kamu -->
-  <img src="https://i.postimg.cc/DZjkB4rn/Whats-App-Image-2025-09-14-at-14-17-35.jpg
-" alt="Foto Profil" class="profile-pic">
+  <main class="card" role="main" aria-labelledby="hero-title">
 
-  <h1>Halo, Saya [Nama Kamu]</h1>
-  <p>Selamat datang di portfolio mini saya 🎉<br>
-     Saya suka belajar coding & membuat website 🚀</p>
+    <div class="left" aria-hidden="false">
+      <!-- Ganti src jika perlu; gambar sudah dari Postimage -->
+      <img
+        src="https://i.postimg.cc/DZjkB4rn/Whats-App-Image-2025-09-14-at-14-17-35.jpg"
+        alt="Foto Barrul Khodil Dzakiyi"
+        class="profile-pic" />
 
-  <div class="links">
-    <a href="https://github.com/username" target="_blank">GitHub</a>
-    <a href="https://linkedin.com/in/username" target="_blank">LinkedIn</a>
-    <a href="https://instagram.com/username" target="_blank">Instagram</a>
+      <div class="name">Barrul Khodil Dzakiyi</div>
+      <div class="role">Web learner • Hobbyist developer • Sharing projects</div>
+    </div>
+
+    <div class="body-right">
+      <h1 id="hero-title">Halo — Selamat datang di portfolio mini saya</h1>
+      <p class="lead">
+        Saya suka belajar coding, membuat website, dan berbagi proses belajar.
+        Di sini ada info singkat & cara hubungi saya. 🚀
+      </p>
+
+      <div class="links" aria-label="Tautan sosial dan kontak">
+        <!-- GitHub (ganti kalau mau ke profil lain) -->
+        <a class="btn" href="https://github.com/Bforme" target="_blank" rel="noopener" aria-label="Buka GitHub Barrul">
+          <!-- GitHub icon (SVG) -->
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 .5C5.73.5.75 5.48.75 11.75c0 4.93 3.19 9.11 7.61 10.59.56.1.76-.24.76-.53 0-.26-.01-1-.02-1.96-3.09.67-3.74-1.49-3.74-1.49-.5-1.28-1.22-1.62-1.22-1.62-.99-.68.07-.67.07-.67 1.09.08 1.66 1.12 1.66 1.12.97 1.66 2.55 1.18 3.17.9.1-.7.38-1.18.7-1.45-2.47-.28-5.07-1.24-5.07-5.51 0-1.22.44-2.21 1.16-2.99-.12-.28-.5-1.41.11-2.94 0 0 .95-.3 3.11 1.13a10.8 10.8 0 0 1 2.83-.38c.96.01 1.93.13 2.83.38 2.16-1.44 3.11-1.13 3.11-1.13.61 1.53.23 2.66.11 2.94.72.78 1.16 1.77 1.16 2.99 0 4.28-2.61 5.22-5.09 5.49.39.34.74 1.02.74 2.06 0 1.49-.01 2.69-.01 3.06 0 .29.2.64.77.53C20.06 20.86 23.25 16.68 23.25 11.75 23.25 5.48 18.27.5 12 .5z"/>
+          </svg>
+          <span style="font-size:0.93rem">GitHub</span>
+        </a>
+
+        <!-- Instagram -->
+        <a class="btn" href="https://www.instagram.com/yooomaalajkaa" target="_blank" rel="noopener" aria-label="Buka Instagram Barrul">
+          <!-- Instagram icon (SVG) -->
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm8.5 1.5h-8.5A4.25 4.25 0 0 0 3.999 7.75v8.5A4.25 4.25 0 0 0 8.25 20.5h8.5A4.25 4.25 0 0 0 21 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5zM12 7.25a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5zm0 1.5a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 0 0 0-6.5zM17.6 6.25a1.05 1.05 0 1 1-2.1 0 1.05 1.05 0 0 1 2.1 0z"/>
+          </svg>
+          <span style="font-size:0.93rem">Instagram</span>
+        </a>
+
+        <!-- WhatsApp -->
+        <a class="btn wa" href="https://wa.me/6289512294175" target="_blank" rel="noopener" aria-label="Chat WhatsApp Barrul">
+          <!-- WhatsApp icon (SVG) -->
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.52 3.48A11.95 11.95 0 0 0 12 .25C5.73.25.75 5.22.75 11.5c0 2.02.53 3.88 1.45 5.53L.25 23.75l6.9-1.81A11.2 11.2 0 0 0 12 22.75c6.27 0 11.25-4.98 11.25-11.25 0-1.9-.46-3.69-1.73-5.02zM12 21.25c-.94 0-1.86-.24-2.67-.7l-.19-.11-4.1 1.08 1.1-3.97-.12-.21A9.75 9.75 0 1 1 21.75 11.5 9.74 9.74 0 0 1 12 21.25zM17.37 14.45c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.66.88-.81 1.06-.15.18-.3.2-.57.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.58-1.5-1.85-.15-.27-.02-.41.12-.55.12-.12.27-.31.41-.46.14-.15.19-.27.28-.45.09-.18.04-.34-.02-.48-.07-.14-.61-1.48-.84-2.03-.22-.53-.45-.45-.62-.46l-.53-.01c-.18 0-.47.07-.72.34-.25.27-.99.97-.99 2.37s1.02 2.75 1.16 2.94c.14.18 2.01 3.05 4.86 4.28 2.39 1.06 2.99.94 3.52.88.53-.06 1.7-.7 1.94-1.37.25-.66.25-1.23.18-1.37-.07-.14-.25-.23-.52-.37z"/>
+          </svg>
+          <span style="font-size:0.93rem">WhatsApp</span>
+        </a>
+
+        <!-- Optional: LinkedIn placeholder (ganti link jika ada) -->
+        <a class="btn" href="https://linkedin.com/in/username" target="_blank" rel="noopener" aria-label="LinkedIn (ganti jika perlu)">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5zm.02 7.5H2V21h3V11zm7.5 0h-2.98V21H15v-5.46c0-3.03 3.98-3.26 3.98 0V21h3V14.46C22 9.64 16.97 9.3 15 11.3V11z"/>
+          </svg>
+          <span style="font-size:0.93rem">LinkedIn</span>
+        </a>
+      </div>
+
+      <div class="meta">
+        <div>📍 Indonesia • Available for collaborations & small projects</div>
+      </div>
+    </div>
+
+    <footer>© 2025 Barrul Khodil Dzakiyi</footer>
+  </main>
+
+  <!-- floating WA quick action -->
+  <div class="float-wa" aria-hidden="false">
+    <a href="https://wa.me/6289512294175" target="_blank" rel="noopener" aria-label="Chat WhatsApp cepat">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M20.52 3.48A11.95 11.95 0 0 0 12 .25C5.73.25.75 5.22.75 11.5c0 2.02.53 3.88 1.45 5.53L.25 23.75l6.9-1.81A11.2 11.2 0 0 0 12 22.75c6.27 0 11.25-4.98 11.25-11.25 0-1.9-.46-3.69-1.73-5.02zM12 21.25c-.94 0-1.86-.24-2.67-.7l-.19-.11-4.1 1.08 1.1-3.97-.12-.21A9.75 9.75 0 1 1 21.75 11.5 9.74 9.74 0 0 1 12 21.25zM17.37 14.45c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.66.88-.81 1.06-.15.18-.3.2-.57.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.58-1.5-1.85-.15-.27-.02-.41.12-.55.12-.12.27-.31.41-.46.14-.15.19-.27.28-.45.09-.18.04-.34-.02-.48-.07-.14-.61-1.48-.84-2.03-.22-.53-.45-.45-.62-.46l-.53-.01c-.18 0-.47.07-.72.34-.25.27-.99.97-.99 2.37s1.02 2.75 1.16 2.94c.14.18 2.01 3.05 4.86 4.28 2.39 1.06 2.99.94 3.52.88.53-.06 1.7-.7 1.94-1.37.25-.66.25-1.23.18-1.37-.07-.14-.25-.23-.52-.37z"/>
+      </svg>
+    </a>
   </div>
-
-  <footer>© 2025 [Nama Kamu]. Dibuat dengan ❤️ di GitHub Pages</footer>
 </body>
 </html>
