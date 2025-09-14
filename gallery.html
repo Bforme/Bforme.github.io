@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Galeri Foto — Barrul</title>
+  <meta name="description" content="Galeri foto Barrul Khodil Dzakiyi">
+  <style>
+    :root{
+      --page-bg: #f6f7fb;
+      --card-bg: #ffffff;
+      --muted: #6b7280;
+      --gap: 12px;
+      --maxw: 1200px;
+    }
+    *{box-sizing:border-box}
+    body{ margin:0; font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background:var(--page-bg); color:#111; min-height:100vh; display:flex; align-items:flex-start; justify-content:center; padding:28px; }
+
+    .container{
+      width:100%;
+      max-width:var(--maxw);
+      background:var(--card-bg);
+      border-radius:12px;
+      padding:20px;
+      box-shadow: 0 14px 40px rgba(17,24,39,0.08);
+    }
+
+    .topbar{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px }
+    .title{ font-size:1.25rem; font-weight:700 }
+    .desc{ color:var(--muted); font-size:0.95rem }
+
+    .actions{ display:flex; gap:10px; align-items:center }
+    .btn {
+      padding:8px 12px; border-radius:10px; background: #111827; color:white; text-decoration:none; font-weight:600;
+    }
+    .btn.secondary{ background:transparent; color:#111827; border:1px solid #e5e7eb }
+
+    /* gallery grid: 5 columns desktop, responsive */
+    .grid{
+      display:grid;
+      gap:var(--gap);
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .photo{
+      background:#fff;
+      border-radius:10px;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:120px;
+      box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+    }
+    .photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+    .caption{ font-size:0.9rem; color:var(--muted); margin-top:8px; text-align:center }
+
+    /* Two rows only: we provide 10 items (2x5) by default */
+    /* responsive columns */
+    @media (max-width:1100px){ .grid{ grid-template-columns: repeat(4,1fr) } }
+    @media (max-width:900px){ .grid{ grid-template-columns: repeat(3,1fr) } }
+    @media (max-width:600px){ .grid{ grid-template-columns: repeat(2,1fr) } }
+
+    footer{ margin-top:16px; color:var(--muted); font-size:0.9rem; text-align:center }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="topbar">
+      <div>
+        <div class="title">Galeri Foto</div>
+        <div class="desc">Kumpulan foto — background putih estetik. 2 baris × 5 kolom (10 foto).</div>
+      </div>
+
+      <div class="actions">
+        <a class="btn secondary" href="index.html">← Kembali</a>
+        <a class="btn" href="index.html" target="_blank">Buka Beranda (baru)</a>
+      </div>
+    </div>
+
+    <section class="grid" aria-label="Galeri foto">
+      <!-- Ganti semua src berikut dengan link foto kamu (Postimg / Imgur) atau path repo -->
+      <div class="photo"><img src="https://i.postimg.cc/DZjkB4rn/Whats-App-Image-2025-09-14-at-14-17-35.jpg" alt="Foto 1"></div>
+      <div class="photo"><img src="https://via.placeholder.com/600x400?text=Foto+2" alt="Foto 2"></div>
+      <div class="photo"><img src="https://via.placeholder.com/600x400?text=Foto+3" alt="Foto 3"></div>
+      <div class="photo"><img src="https://via.placeholder.com/600x400?text=Foto+4" alt="Foto 4"></div>
+      <div class="photo"><img src="https://via.placeholder.com/600x400?text=Foto+5" alt="Foto 5"></div>
+
+      <div class="photo"><img src="https://via.placeholder.com/600x400?text=Foto+6" alt="Foto 6"></div>
+      <div class="photo"><img src="https://via.placeholder.com/600x400?text=Foto+7" alt="Foto 7"></div>
+      <div class="photo"><img src="https://via.placeholder.com/600x400?text=Foto+8" alt="Foto 8"></div>
+      <div class="photo"><img src="https://via.placeholder.com/600x400?text=Foto+9" alt="Foto 9"></div>
+      <div class="photo"><img src="https://via.placeholder.com/600x400?text=Foto+10" alt="Foto 10"></div>
+    </section>
+
+    <footer>Tip: replace the placeholder image `src` with your PostImage/Imgur links or upload images to repo (eg. <code>assets/1.jpg</code>) and use relative paths.</footer>
+  </main>
+</body>
+</html>
