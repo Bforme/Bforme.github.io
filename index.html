@@ -1,102 +1,132 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Barrul Khodil Dzakiyi — Portfolio</title>
-  <meta name="description" content="Portfolio mini Barrul Khodil Dzakiyi — belajar coding, membuat website, dan berbagi proyek." />
-  <meta name="theme-color" content="#667eea" />
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barrul Khodil Dzakiyi – Portfolio</title>
+  <meta name="description" content="Portfolio mini Barrul Khodil Dzakiyi — belajar coding, membuat website, dan berbagi project.">
   <style>
-    :root{ --bg1:#667eea; --bg2:#764ba2; --glass:rgba(255,255,255,0.07); --glass-strong:rgba(255,255,255,0.14); --accent:#fff; --muted:rgba(255,255,255,0.88); --radius:16px; }
-    *{box-sizing:border-box} html,body{height:100%} body{
-      margin:0; font-family:Inter, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; -webkit-font-smoothing:antialiased;
-      background: linear-gradient(135deg,var(--bg1),var(--bg2)); color:var(--accent);
-      display:flex; align-items:center; justify-content:center; padding:28px; min-height:100vh;
+    :root {
+      --bg1: #667eea;
+      --bg2: #764ba2;
+      --card-bg: rgba(255, 255, 255, 0.1);
+      --text-light: rgba(255, 255, 255, 0.85);
+      --radius: 18px;
+      --maxw: 960px;
     }
 
-    /* Card */
-    .card{ width:100%; max-width:920px; background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.015)); border-radius:var(--radius); padding:28px; box-shadow: 0 18px 40px rgba(0,0,0,0.35); display:flex; gap:28px; align-items:center; position:relative; overflow:hidden; backdrop-filter: blur(6px); }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-    /* Left column: picture */
-    .left{ flex:0 0 220px; text-align:center }
-    .profile-pic{ display:block; width:170px; height:170px; border-radius:50%; object-fit:cover; border:4px solid rgba(255,255,255,0.14); box-shadow: 0 8px 20px rgba(0,0,0,0.35); transition: transform .35s ease; margin:0 auto 12px; background-color: rgba(255,255,255,0.04); }
-    .profile-pic:hover{ transform: translateY(-6px) scale(1.02) }
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border-radius: var(--radius);
+      padding: 40px;
+      max-width: var(--maxw);
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    }
 
-    .name{ font-size:1.35rem; font-weight:700; margin:8px 0 4px }
-    .role{ font-size:0.95rem; color:var(--muted); margin:0 }
+    .profile-pic {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
 
-    /* Right: content */
-    .body-right{ flex:1 1 auto; min-width:220px }
-    h1{ margin:0 0 8px 0; font-size:1.5rem; line-height:1.05 }
-    p.lead{ margin:0 0 18px 0; color:var(--muted); font-size:1rem }
+    h1 {
+      font-size: 2rem;
+      margin: 10px 0 5px;
+    }
+    h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-light);
+      margin-bottom: 25px;
+    }
 
-    .links{ display:flex; gap:10px; flex-wrap:wrap }
-    .btn{ display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px; text-decoration:none; background:var(--glass); color:var(--accent); font-weight:600; transition: transform .15s ease, background .15s ease; box-shadow: 0 3px 8px rgba(0,0,0,0.18) }
-    .btn:hover{ transform: translateY(-4px) }
-    .btn svg{ width:18px; height:18px }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
 
-    .btn.wa{ background: linear-gradient(90deg,#25D366,#128C7E); color:white }
-    .meta{ margin-top:16px; color:var(--muted); font-size:0.92rem }
-    footer{ position:absolute; right:18px; bottom:18px; font-size:0.85rem; color:rgba(255,255,255,0.85) }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 25px;
+    }
 
-    /* floating WA quick-action */
-    .float-wa{ position:fixed; right:18px; bottom:18px; z-index:999 }
-    .float-wa a{ display:inline-flex; align-items:center; justify-content:center; width:60px; height:60px; border-radius:50%; background:linear-gradient(90deg,#25D366,#128C7E); box-shadow: 0 10px 28px rgba(18,140,126,0.26); text-decoration:none }
-    .float-wa svg{ width:28px; height:28px; color:white }
+    .links a {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: 500;
+    }
 
-    /* responsive */
-    @media (max-width:720px){ .card{ flex-direction:column; padding:20px; gap:12px } .left{ order:0 } .body-right{ text-align:center } footer{ position:static; margin-top:8px } }
-    @media (max-width:420px){ .profile-pic{ width:120px; height:120px } h1{ font-size:1.25rem } p.lead{ font-size:0.95rem } }
+    .links a:hover {
+      background: #fff;
+      color: var(--bg2);
+      transform: translateY(-2px);
+    }
 
+    .footer {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      margin-top: 20px;
+    }
+
+    /* Responsif */
+    @media (max-width: 600px) {
+      .card {
+        padding: 25px 20px;
+      }
+      h1 { font-size: 1.6rem; }
+      p { font-size: 1rem; }
+    }
   </style>
 </head>
 <body>
-  <main class="card" role="main" aria-labelledby="hero-title">
-    <div class="left">
-      <!-- Pastikan URL satu baris penuh, tidak ada newline -->
-      <img loading="lazy" src="https://i.postimg.cc/DZjkB4rn/Whats-App-Image-2025-09-14-at-14-17-35.jpg" alt="Foto Barrul Khodil Dzakiyi" class="profile-pic" />
+  <div class="card">
+    <!-- Ganti link foto sesuai URL Postimage kamu -->
+    <img src="https://i.postimg.cc/DZjkB4rn/Whats-App-Image-2025-09-14-at-14-17-35.jpg" alt="Foto Barrul Khodil Dzakiyi" class="profile-pic">
 
-      <div class="name">Barrul Khodil Dzakiyi</div>
-      <div class="role">Web learner • Hobbyist developer • Sharing projects</div>
+    <h1>Barrul Khodil Dzakiyi</h1>
+    <h2>Web learner · Hobbyist developer · Sharing projects</h2>
+
+    <p>Personal branding for me to you all😆<br>
+    Saya suka belajar coding, membuat website, dan berbagi proses belajar. 🚀</p>
+
+    <div class="links">
+      <a href="https://www.instagram.com/yooomaalajkaa" target="_blank">Instagram</a>
+      <a href="https://wa.me/6289512294175" target="_blank">WhatsApp</a>
     </div>
 
-    <div class="body-right">
-      <h1 id="hero-title">Halo — Selamat datang di portfolio mini saya</h1>
-      <p class="lead">Saya suka belajar coding, membuat website, dan berbagi proses belajar. Di sini ada info singkat & cara hubungi saya. 🚀</p>
-
-      <div class="links" aria-label="Tautan sosial dan kontak">
-        <a class="btn" href="https://github.com/Bforme" target="_blank" rel="noopener" aria-label="Buka GitHub Barrul">
-          <!-- GitHub icon -->
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.75 5.48.75 11.75c0 4.93 3.19 9.11 7.61 10.59.56.1.76-.24.76-.53 0-.26-.01-1-.02-1.96-3.09.67-3.74-1.49-3.74-1.49-.5-1.28-1.22-1.62-1.22-1.62-.99-.68.07-.67.07-.67 1.09.08 1.66 1.12 1.66 1.12.97 1.66 2.55 1.18 3.17.9.1-.7.38-1.18.7-1.45-2.47-.28-5.07-1.24-5.07-5.51 0-1.22.44-2.21 1.16-2.99-.12-.28-.5-1.41.11-2.94 0 0 .95-.3 3.11 1.13a10.8 10.8 0 0 1 2.83-.38c.96.01 1.93.13 2.83.38 2.16-1.44 3.11-1.13 3.11-1.13.61 1.53.23 2.66.11 2.94.72.78 1.16 1.77 1.16 2.99 0 4.28-2.61 5.22-5.09 5.49.39.34.74 1.02.74 2.06 0 1.49-.01 2.69-.01 3.06 0 .29.2.64.77.53C20.06 20.86 23.25 16.68 23.25 11.75 23.25 5.48 18.27.5 12 .5z"/></svg>
-          <span style="font-size:0.93rem">GitHub</span>
-        </a>
-
-        <a class="btn" href="https://www.instagram.com/yooomaalajkaa" target="_blank" rel="noopener" aria-label="Buka Instagram Barrul">
-          <!-- Instagram icon -->
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm8.5 1.5h-8.5A4.25 4.25 0 0 0 3.999 7.75v8.5A4.25 4.25 0 0 0 8.25 20.5h8.5A4.25 4.25 0 0 0 21 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5zM12 7.25a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5zm0 1.5a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 0 0 0-6.5zM17.6 6.25a1.05 1.05 0 1 1-2.1 0 1.05 1.05 0 0 1 2.1 0z"/></svg>
-          <span style="font-size:0.93rem">Instagram</span>
-        </a>
-
-        <a class="btn wa" href="https://wa.me/6289512294175" target="_blank" rel="noopener" aria-label="Chat WhatsApp Barrul">
-          <!-- WhatsApp icon -->
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.95 11.95 0 0 0 12 .25C5.73.25.75 5.22.75 11.5c0 2.02.53 3.88 1.45 5.53L.25 23.75l6.9-1.81A11.2 11.2 0 0 0 12 22.75c6.27 0 11.25-4.98 11.25-11.25 0-1.9-.46-3.69-1.73-5.02zM12 21.25c-.94 0-1.86-.24-2.67-.7l-.19-.11-4.1 1.08 1.1-3.97-.12-.21A9.75 9.75 0 1 1 21.75 11.5 9.74 9.74 0 0 1 12 21.25zM17.37 14.45c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.66.88-.81 1.06-.15.18-.3.2-.57.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.58-1.5-1.85-.15-.27-.02-.41.12-.55.12-.12.27-.31.41-.46.14-.15.19-.27.28-.45.09-.18.04-.34-.02-.48-.07-.14-.61-1.48-.84-2.03-.22-.53-.45-.45-.62-.46l-.53-.01c-.18 0-.47.07-.72.34-.25.27-.99.97-.99 2.37s1.02 2.75 1.16 2.94c.14.18 2.01 3.05 4.86 4.28 2.39 1.06 2.99.94 3.52.88.53-.06 1.7-.7 1.94-1.37.25-.66.25-1.23.18-1.37-.07-.14-.25-.23-.52-.37z"/></svg>
-          <span style="font-size:0.93rem">WhatsApp</span>
-        </a>
-
-      </div>
-
-      <div class="meta">📍 Indonesia • Available for collaborations & small projects</div>
+    <div class="footer">
+      📍 Indonesia · Available for collaborations & small projects<br>
+      © 2025 Barrul Khodil Dzakiyi
     </div>
-
-    <footer>© 2025 Barrul Khodil Dzakiyi</footer>
-  </main>
-
-  <!-- floating WA quick action -->
-  <div class="float-wa" aria-hidden="false">
-    <a href="https://wa.me/6289512294175" target="_blank" rel="noopener" aria-label="Chat WhatsApp cepat">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.95 11.95 0 0 0 12 .25C5.73.25.75 5.22.75 11.5c0 2.02.53 3.88 1.45 5.53L.25 23.75l6.9-1.81A11.2 11.2 0 0 0 12 22.75c6.27 0 11.25-4.98 11.25-11.25 0-1.9-.46-3.69-1.73-5.02zM12 21.25c-.94 0-1.86-.24-2.67-.7l-.19-.11-4.1 1.08 1.1-3.97-.12-.21A9.75 9.75 0 1 1 21.75 11.5 9.74 9.74 0 0 1 12 21.25zM17.37 14.45c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.66.88-.81 1.06-.15.18-.3.2-.57.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.58-1.5-1.85-.15-.27-.02-.41.12-.55.12-.12.27-.31.41-.46.14-.15.19-.27.28-.45.09-.18.04-.34-.02-.48-.07-.14-.61-1.48-.84-2.03-.22-.53-.45-.45-.62-.46l-.53-.01c-.18 0-.47.07-.72.34-.25.27-.99.97-.99 2.37s1.02 2.75 1.16 2.94c.14.18 2.01 3.05 4.86 4.28 2.39 1.06 2.99.94 3.52.88.53-.06 1.7-.7 1.94-1.37.25-.66.25-1.23.18-1.37-.07-.14-.25-.23-.52-.37z"/></svg>
-    </a>
   </div>
 </body>
 </html>
